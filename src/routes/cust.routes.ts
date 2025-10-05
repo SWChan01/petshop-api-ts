@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { listCustomers, createCustomer, detailCustomer, deleteCustomer, updateCustomer } from "../controllers/customer.controller";
+import { verifyAuthCookie } from "../middlewares/auth.middleware";
 
 const router = Router();
 
@@ -124,10 +125,10 @@ const router = Router();
  *         description: Internal server error
  */
 
-router.get('/', listCustomers);
-router.get('/:id', detailCustomer);
-router.post('/', createCustomer);
-router.put('/:id', updateCustomer);
-router.delete('/:id', deleteCustomer);
+router.get('/', verifyAuthCookie, listCustomers);
+router.get('/:id', verifyAuthCookie, detailCustomer);
+router.post('/', verifyAuthCookie, createCustomer);
+router.put('/:id', verifyAuthCookie, updateCustomer);
+router.delete('/:id', verifyAuthCookie, deleteCustomer);
 
 export default router;
