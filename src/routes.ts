@@ -3,6 +3,7 @@ import authRoutes from './routes/auth.routes'
 import custRoutes from './routes/cust.routes'
 import servRoutes from './routes/serv.routes'
 import bookRoutes from './routes/book.routes'
+import userRoutes from './routes/users.routes'
 import { Router } from 'express'
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
@@ -30,5 +31,6 @@ router.use('/auth', authRoutes);
 router.use('/customers', custRoutes);
 router.use('/services', servRoutes);
 router.use('/bookings', bookRoutes);
+router.use('/users', userRoutes)
 
 export default router;
