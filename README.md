@@ -1,0 +1,78 @@
+# 🐾 Petshop API
+
+> Some portions of this codebase were developed with the assistance of artificial intelligence tools to improve productivity and maintain best practices.
+
+The Petshop API is a RESTful service designed to manage the operations of a modern pet care business. It provides endpoints for handling customers, pets, services, bookings, and user authentication. Built with Node.js and Express, it supports secure JWT-based login and integrates seamlessly with Swagger UI for interactive documentation.
+
+---
+
+## 🚀 Features
+
+- 🐶 **Pet Management** – Register, update, and delete pets linked to customers  
+- 👥 **Customer Records** – Full CRUD operations for customer data  
+- 🧼 **Service Catalog** – Define and manage services like grooming, training, and veterinary care  
+- 📅 **Booking System** – Schedule services for pets with conflict prevention  
+- 🔐 **Authentication** – Secure login and signup with hashed passwords and JWT  
+- 🧑‍💻 **Admin Tools** – Manage users and sessions with role-based access
+
+---
+
+## 📦 Technologies Used
+
+- Node.js + Express  
+- MySQL (via Sequelize or raw queries)  
+- JWT for authentication  
+- bcrypt for password hashing  
+- Swagger UI for API documentation
+
+---
+
+## 📄 API Documentation
+
+Interactive Swagger UI available on ```/docs``` after running the code.
+
+You can test all endpoints directly from the browser.
+
+---
+## 🛠 Installation
+
+```bash
+git clone https://github.com/your-username/petshop-api.git
+cd petshop-api
+npm install
+npm run dev
+```
+
+Create a ```.env``` file with the following variables:
+```bash
+JWT_SIGN_KEY=your_secret_key
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=your_password
+DB_DATABASE=petshop
+FRONT_END_URL=https://example.com
+```
+
+Check ```.env.sample``` for more information aboout what these do.
+
+## 📚 Wiki
+For detailed usage, data models, and contribution guidelines, visit the [Wiki](https://github.com/hannaseraphim/petshop-api-ts/wiki)
+
+## 🤝 Contributing
+
+We welcome contributions! Please fork the repository, create a feature branch, and submit a pull request. All code is reviewed by human maintainers.
+
+```bash
+git checkout -b feature-name
+git commit -m "Add feature"
+git push origin feature-name
+```
+
+## 📬 Contact
+For questions or support, reach out to my email on [hannaseraphim@gmail.com](mailto:hannaseraphim@gmail.com).
+
+## 📝 License
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+© 2025 Hanna. All rights reserved. 
