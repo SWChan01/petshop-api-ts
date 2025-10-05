@@ -3,19 +3,36 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import petsRoutes from './routes/pets.routes'
 import authRoutes from './routes/auth.routes'
-// import routes from './routes'
+import custRoutes from './routes/cust.routes'
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsdoc from 'swagger-jsdoc';
+import {version} from '../package.json'
 
+// Base settings
 dotenv.config();
 const app = express();
 const PORT = process.env.API_PORT || 3000;
-
-// Base settings
 app.use(cors({origin: process.env.FRONT_END_URL}))
 app.use(express.json());
+const swaggerOptions ={
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: "Petshop API",
+            version: version,
+            description: 'Petshop API Documentation'
+        }
+    },
+    apis: ['./dist/routes/*.js']
+}
+
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
 // Routes setting
-app.use('/pets', petsRoutes)
-app.use('/auth', authRoutes)
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/pets', petsRoutes);
+app.use('/auth', authRoutes);
+app.use('/customers', custRoutes);
 
 // Initialize the API
 app.listen(PORT, () => {

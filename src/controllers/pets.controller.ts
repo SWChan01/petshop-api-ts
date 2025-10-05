@@ -9,7 +9,7 @@ export const listPets = (req: Request, res: Response) => {
             return res.json({Message: result})
         })
     } catch (err) {
-        
+        return res.status(500).json({Message: 'INTERNAL_ERROR', Error: err});
     }
 }
 
@@ -33,7 +33,7 @@ export const createPet = (req: Request, res: Response) => {
                 //Proceed adding the pet to the database
                 db.query('INSERT INTO pets(name, race, type, customer_id) VALUES(?, ?, ?, ?)', [name, race, type, customer_id], (err, result) => {
                     if(err) return res.status(500).json({Message: 'INTERNAL_ERROR', Error: err})
-                    return  res.json({Message: 'PET_CREATED'})})    
+                    return  res.json({Message: 'PET_CREATED', Content: result})})    
             })
             
         })
@@ -76,7 +76,7 @@ export const updatePet = (req: Request, res: Response) => {
             // Updates the desired field
             db.query(`UPDATE pets SET ${setClause} WHERE id = ?`, [...values, id], (err, result) => {
                 if(err) return res.status(500).json({Message: 'INTERNAL_ERROR', Error: err});
-                return res.status(201).json({Message: 'PET_UPDATED', Content: result})
+                return res.json({Message: 'PET_UPDATED', Content: result})
             })
         })
     } catch (err) {
@@ -97,7 +97,7 @@ export const deletePet = (req: Request, res: Response) => {
             // Deletes the desired pet from database
             db.query('DELETE FROM pets WHERE(`id` = ?)', [id], (err, result) => {
                 if(err) return res.status(500).json({Message: 'INTERNAL_ERROR', Error: err});
-                return res.status(200).json({Message: 'PET_DELETED', Content: result});
+                return res.json({Message: 'PET_DELETED', Content: result});
             })
         })
     } catch (err) {
