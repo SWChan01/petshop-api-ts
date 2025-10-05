@@ -35,7 +35,7 @@ export const login = (req: Request, res: Response) => {
         if(correctPassword) {
             res.json({Message: 'LOGIN_SUCCESS'})
         } else {
-            res.status(404).json({Error: 'INVALID_PASSWORD'})
+            res.status(404).json({Message: 'INVALID_PASSWORD'})
         }
     })
 }
