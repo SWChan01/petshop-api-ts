@@ -1,0 +1,593 @@
+openapi: 3.0.0
+info:
+  title: Petshop API
+  version: 1.0.0
+  description: |
+    🐾 Petshop API – Complete Management for Your Pet Business
+
+    The Petshop API is a robust and scalable RESTful interface designed to power the digital operations of a modern pet care business. It provides full CRUD capabilities for managing customers, pets, services, bookings, and users, while also offering secure authentication via JWT. Whether you're building a mobile app, a web dashboard, or integrating with third-party systems, this API serves as the backbone for all core functionalities.
+
+    ✨ Key Features:
+    - Customer Management: Create, update, retrieve, and delete customer records. Each customer can be linked to multiple pets and bookings.
+    - Pet Registry: Maintain detailed records of pets including name, breed, type, and ownership. Supports updates and deletion with optional cascading removal of related data.
+    - Service Catalog: Define and manage services offered by the petshop, such as grooming, veterinary care, training, and more. Each service includes a name, description, and price.
+    - Booking System: Schedule services for pets with status tracking and optional notes. Prevents duplicate bookings and ensures data integrity.
+    - User Authentication: Secure login and registration endpoints using hashed passwords and JWT-based session management. Supports role-based access control via user type.
+    - Administrative Tools: Endpoints for listing, updating, and deleting users, with password encryption and session handling.
+
+    🔐 Security:
+    - Passwords are securely hashed using bcrypt.
+    - JWT tokens are used for session management and authentication.
+    - Cookies are set with httpOnly to prevent client-side access.
+
+    📦 Data Integrity:
+    - All relational checks (e.g., verifying customer existence before adding a pet) are handled server-side.
+    - Duplicate prevention is built into booking and pet creation logic.
+    - Cascading delete options allow for safe removal of customers and their associated pets.
+
+    📚 Developer Experience:
+    - Fully documented endpoints with request and response schemas.
+    - Organized by resource type: /customers, /pets, /services, /bookings, /users, /auth.
+    - Uses standard HTTP status codes for clear error handling and success feedback.
+    - Compatible with Swagger UI, Postman, and other OpenAPI tools.
+
+    🚀 Use Cases:
+    - Build a mobile app for pet owners to book services and manage their pets.
+    - Create an admin dashboard for staff to manage daily operations.
+    - Integrate with payment gateways or notification systems.
+    - Extend with analytics, loyalty programs, or multi-branch support.
+
+servers:
+  - url: "http://localhost:3000"
+    description: Local development server
+
+paths:
+  /auth/signup:
+    post:
+      summary: Register a new user
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, email, password]
+              properties:
+                name: { type: string }
+                email: { type: string }
+                password: { type: string }
+      responses:
+        '201': { description: User created successfully }
+        '402': { description: User already exists }
+        '404': { description: Token not found }
+        '500': { description: Internal server error }
+
+  /auth/login:
+    post:
+      summary: Authenticate user and start session
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string }
+                password: { type: string }
+      responses:
+        '200': { description: Login successful }
+        '404': { description: Invalid password or user not found }
+        '500': { description: Internal server error }
+
+  /users:
+    get:
+      summary: List all users
+      tags: [Users]
+      responses:
+        '200': 
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: 
+                    id: 
+                      type: integer
+                    name:
+                      type: string
+                    email: 
+                      type: string
+                    password:
+                      type: string
+                    type:
+                      type: string
+                    created_on:
+                      type: string
+        '500': { description: Internal server error }
+
+  /users/{id}:
+    get:
+      summary: Get details of a specific user
+      tags: [Users]
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: integer }
+      responses:
+        '200': 
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  id: 
+                    type: integer
+                  name:
+                    type: string
+                  email: 
+                    type: string
+                  password:
+                    type: string
+                  type:
+                    type: string
+                  created_on:
+                    type: string
+        '404': { description: User not found }
+        '500': { description: Internal server error }
+
+    put:
+      summary: Update a user's information
+      tags: [Users]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+          '201': { description: User updated }
+          '404': { description: User not found }
+          '500': { description: Internal server error }
+
+    delete:
+      summary: Delete a user
+      tags: [Users]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+          '200': { description: User deleted }
+          '404': { description: User not found }
+          '500': { description: Internal server error }
+  /pets:
+    get:
+      summary: List all pets
+      tags: [Pets]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    race:
+                      type: string
+                    type:
+                      type: string
+                    customer_id:
+                      type: integer
+        '500':
+          description: Internal server 
+
+    post:
+      summary: Create a new pet
+      tags: [Pets]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, race, type, customer_id]
+              properties:
+                name: { type: string }
+                race: { type: string }
+                type: { type: string }
+                customer_id: { type: integer }
+      responses:
+        '200': { description: Pet created}
+        '404': { description: Customer not found }
+        '409': { description: Pet already exists }
+        '500': { description: Internal server error }
+
+  paths:
+  /pets/{id}:
+    get:
+      summary: Get details of a specific pet
+      tags: [Pets]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': 
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  id: 
+                    type: integer
+                  name:
+                    type: string
+                  email: 
+                    type: string
+                  password:
+                    type: string
+                  type:
+                    type: string
+                  created_on:
+                    type: string
+        '404': { description: Pet not found }
+        '500': { description: Internal server error }
+
+    put:
+      summary: Update a pet's information
+      tags: [Pets]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '201': { description: Pet updated }
+        '404': { description: Pet not found }
+        '500': { description: Internal server error }
+
+    delete:
+      summary: Delete a pet
+      tags: [Pets]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Success }
+        '404': { description: Pet not found }
+        '500': { description: Internal server error }
+
+  /services:
+    get:
+      summary: List all services
+      tags: [Services]
+      responses:
+        '200': 
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties: 
+                    id: 
+                      type: integer
+                    name:
+                      type: string
+                    description: 
+                      type: string
+                    price:
+                      type: number
+        '500': { description: Internal server error }
+
+    post:
+      summary: Create a new service
+      tags: [Services]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, description, price]
+              properties:
+                name: { type: string }
+                description: { type: string }
+                price: { type: number }
+      responses:
+        '200': { description: Success }
+        '409': { description: Service already exists }
+        '500': { description: Internal server error }
+
+  /services/{id}:
+    get:
+      summary: Get details of a specific service
+      tags: [Services]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': 
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  id: 
+                    type: integer
+                  name:
+                    type: string
+                  description: 
+                    type: string
+                  type:
+                    type: number
+        '404': { description: Service not found }
+        '500': { description: Internal server error }
+
+    put:
+      summary: Update a service
+      tags: [Services]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '201': { description: Service updated }
+        '404': { description: Service not found }
+        '500': { description: Internal server error }
+
+    delete:
+      summary: Delete a service
+      tags: [Services]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Success }
+        '404': { description: Service not found }
+        '500': { description: Internal server error }
+
+  /customers:
+    get:
+      summary: List all customers
+      tags: [Customers]
+      responses:
+        '200': { description: Success }
+        '500': { description: Internal server error }
+
+    post:
+      summary: Create a new customer
+      tags: [Customers]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, phone, address, email]
+              properties:
+                name: { type: string }
+                phone: { type: string }
+                address: { type: string }
+                email: { type: string }
+      responses:
+        '200': { description: Success }
+        '409': { description: Customer already exists }
+        '500': { description: Internal server error }
+
+  /customers/{id}:
+    get:
+      summary: Get details of a specific customer
+      tags: [Customers]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': 
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  id: 
+                    type: integer
+                  name:
+                    type: string
+                  phone: 
+                    type: string
+                  email: 
+                    type: string
+                  address:
+                    type: string
+        '404': { description: Customer not found }
+        '500': { description: Internal server error }
+
+    put:
+      summary: Update a customer's information
+      tags: [Customers]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '201': { description: Customer Updated }
+        '404': { description: Customer not found }
+        '500': { description: Internal server error }
+
+    delete:
+      summary: Delete a customer
+      tags: [Customers]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deletePets:
+                  type: boolean
+                  description: If true, also deletes all pets associated with the customer
+      responses:
+        '200':
+          description: Success
+        '404':
+          description: Customer not found
+        '500':
+          description: Internal server error
+
+  /bookings:
+    get:
+      summary: List all bookings
+      tags: [Bookings]
+      responses:
+        '200': { description: Success }
+        '500': { description: Internal server error }
+
+    post:
+      summary: Create a new booking
+      tags: [Bookings]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [pet_id, service_id, pet_owner]
+              properties:
+                pet_id: { type: integer }
+                service_id: { type: integer }
+                pet_owner: { type: string }
+                observations: { type: string }
+      responses:
+        '200': { description: Success }
+        '409': { description: Booking already exists }
+        '500': { description: Internal server error }
+
+  /bookings/{id}:
+    get:
+      summary: Get details of a specific booking
+      tags: [Bookings]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': 
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  id: 
+                    type: integer
+                  pet_id:
+                    type: integer
+                  service_id: 
+                    type: integer
+                  pet_owner: 
+                    type: integer
+                  date:
+                    type: string
+                  observations:
+                    type: string
+                  status:
+                    type: string
+        '404': { description: Booking not found }
+        '500': { description: Internal server error }
+
+    put:
+      summary: Update a booking
+      tags: [Bookings]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '201': { description: Booking updated }
+        '404': { description: Booking not found }
+        '500': { description: Internal server error }
+
+    delete:
+      summary: Delete a booking
+      tags: [Bookings]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Success }
+        '404': { description: Booking not found }
+        '500': { description: Internal server error }

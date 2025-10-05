@@ -46,7 +46,7 @@ export const login = (req: Request, res: Response) => {
     const {email, password} = req.body;
 
     if(jwtToken) {
-        const token = jwt.sign(email, jwtToken, {expiresIn: '1h'});
+        const token = jwt.sign({email}, jwtToken, {expiresIn: '30d'});
         res.cookie('session_key', token, {
             httpOnly: true,
             secure: false,

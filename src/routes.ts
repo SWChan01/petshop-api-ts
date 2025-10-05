@@ -6,26 +6,12 @@ import bookRoutes from './routes/book.routes'
 import userRoutes from './routes/users.routes'
 import { Router } from 'express'
 import swaggerUi from 'swagger-ui-express';
-import swaggerJsdoc from 'swagger-jsdoc';
-import {version} from '../package.json'
+import YAML from 'yamljs'
 
-const swaggerOptions ={
-    definition: {
-        openapi: '3.0.0',
-        info: {
-            title: "Petshop API",
-            version: version,
-            description: 'Petshop API Documentation'
-        }
-    },
-    apis: ['./dist/routes/*.js']
-}
-
-const swaggerDocs = swaggerJsdoc(swaggerOptions);
-
+const swaggerDocument = YAML.load('./docs/openapi.yaml');
 const router = Router();
 
-router.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+router.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 router.use('/pets', petsRoutes);
 router.use('/auth', authRoutes);
 router.use('/customers', custRoutes);

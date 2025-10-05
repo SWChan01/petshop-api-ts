@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { listUsers, updateUser, deleteUser, detailUser } from "../controllers/users.controller";
 import { verifyAuthCookie } from "../middlewares/auth.middleware";
-
 const router = Router();
 
 router.get('/', verifyAuthCookie, listUsers);
