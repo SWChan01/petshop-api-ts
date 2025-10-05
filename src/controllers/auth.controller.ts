@@ -28,7 +28,7 @@ export const login = (req: Request, res: Response) => {
     const {email, password} = req.body;
 
     db.query('SELECT * FROM users WHERE email = ?', [email], async (err, result) => {
-        if (err || result.length === 0) return res.status(404).json({Error: 'USER_NOT_FOUND'});
+        if (err || result.length === 0) return res.status(404).json({Message: 'USER_NOT_FOUND'});
         const user = result[0];
         const correctPassword = await bcrypt.compare(password, user.password);
 
