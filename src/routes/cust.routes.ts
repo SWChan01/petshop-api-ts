@@ -124,7 +124,6 @@ const router = Router();
  *         description: Internal server error
  */
 
-
 router.get('/', listCustomers);
 router.get('/:id', detailCustomer);
 router.post('/', createCustomer);

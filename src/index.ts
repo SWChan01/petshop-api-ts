@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import petsRoutes from './routes/pets.routes'
 import authRoutes from './routes/auth.routes'
 import custRoutes from './routes/cust.routes'
+import servRoutes from './routes/serv.routes'
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import {version} from '../package.json'
@@ -33,6 +34,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use('/pets', petsRoutes);
 app.use('/auth', authRoutes);
 app.use('/customers', custRoutes);
+app.use('/services', servRoutes);
 
 // Initialize the API
 app.listen(PORT, () => {
