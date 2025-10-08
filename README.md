@@ -38,7 +38,7 @@ You can test all endpoints directly from the browser.
 ## 🛠 Installation
 
 ```bash
-git clone https://github.com/your-username/petshop-api.git
+git clone https://github.com/hannaseraphim/petshop-api.git
 cd petshop-api
 npm install
 npm run dev
